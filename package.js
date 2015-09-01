@@ -1,22 +1,24 @@
 Package.describe({
   name: 'samcorcos:react-materialize',
   version: '0.0.1',
-  // Brief, one-line summary of the package.
-  summary: '',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
+  summary: 'react-materialize: Material design components for react, powered by materializecss',
+  git: 'https://github.com/samcorcos/react-materialize',
   documentation: 'README.md'
 });
 
-Package.onUse(function(api) {
-  api.versionsFrom('1.1.0.3');
-  api.addFiles('react-materialize.js');
-});
+Npm.depends({
+  'exposify': '0.4.3',
+  'react-materialize-real': '0.12.0'
+})
 
-Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('samcorcos:react-materialize');
-  api.addFiles('react-materialize-tests.js');
+Package.onUse(function(api) {
+  api.use(['react@0.1.7', 'cosmos:browserify@0.5.0']);
+  api.imply(['react@0.1.7']);
+
+  api.add_files([
+    'react-materialize.browserify.options.json',
+    'react-materialize.browserify.js'
+  ]);
+
+  api.export('ReactMaterialize');
 });
