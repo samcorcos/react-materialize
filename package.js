@@ -6,19 +6,12 @@ Package.describe({
   documentation: 'README.md'
 });
 
-Npm.depends({
-  'exposify': '0.4.3',
-  'react-materialize-real': '0.12.0'
-})
-
 Package.onUse(function(api) {
-  api.use(['react@0.1.7', 'cosmos:browserify@0.5.0']);
-  api.imply(['react@0.1.7']);
-
-  api.add_files([
-    'react-materialize.browserify.options.json',
-    'react-materialize.browserify.js'
-  ]);
-
-  api.export('ReactMaterialize');
+  api.use(["universe:modules@0.4.1"]);
+  api.addFiles([
+    "bower_components/react-materialize/src/index.import.js",
+    "main.import.js",
+    "test.js"
+  ])
+  api.export("ReactMaterialize")
 });
